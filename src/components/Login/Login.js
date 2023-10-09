@@ -2,8 +2,8 @@ import React, { useState, useEffect, useReducer, useContext } from 'react';
 import Card from '../UI/Card/Card';
 import classes from './Login.module.css';
 import Button from '../UI/Button/Button';
-//import AuthContext from '../../store/auth-context';
-//import Input from '../UI/Input/Input';
+import AuthContext from '../../store/auth-context';
+// import Input from '../UI/Input/Input';
 
 const emailReducer = (state, action) => {
   if (action.type === 'USER_INPUT') {
@@ -42,7 +42,7 @@ const Login = (props) => {
     isValid: null,
   });
 
-  const authCtx = useContext(/* AuthContext */);
+  const authCtx = useContext( AuthContext );
 
   useEffect(() => {
     console.log('EFFECT RUNNING');
@@ -78,15 +78,6 @@ const Login = (props) => {
       passwordState.isValid &&
       newCollegeName.trim() !== ''
     );
-  };
-
-
-  const validateEmailHandler = () => {
-    dispatchEmail({ type: 'INPUT_BLUR' });
-  };
-
-  const validatePasswordHandler = () => {
-    dispatchPassword({ type: 'INPUT_BLUR' });
   };
 
   const validateCollegeNameHandler = () => {
